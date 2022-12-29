@@ -1,0 +1,13 @@
+.statisticsList {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+.item:not(:last-child) {
+    margin-bottom: 20px;
+}
+.itemTitle {
+    display: inline-flex;
+    margin-right: 20px;
+}

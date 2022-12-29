@@ -7,10 +7,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 40px;
+  font-size: 30px;
   color: #010101;
   background-color: #c4d2f2;
-  padding-top: 20px;
 }
 
 code {
