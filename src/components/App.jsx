@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { Filter } from './Filter/Filter';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
+import css from '../components/App.module.css'
 
 export class App extends Component {
   state = {
@@ -21,7 +22,6 @@ export class App extends Component {
         : { contacts: [contact, ...contacts] }
     ));
       // contacts: [...prev.contacts, contact]
-    
   }
   
   changeFilter = (e) => {
@@ -31,23 +31,31 @@ export class App extends Component {
 
   getFilteredContacts = () => {
     const { contacts, filter } = this.state;
-    // console.log(filter);
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter)
     );
   }
+
+  removeContact = (contactId) => {
+    this.setState((prev) => {
+      return {
+        contacts: prev.contacts.filter(({ id }) => id !== contactId),
+      };
+    });
+  };
+
   render() {
     const {filter} = this.state;
     const filteredContacts = this.getFilteredContacts();
 
     return (
       <div>
-        <h1>Phonebook</h1>
+        <h1 className={css.title}>Phonebook</h1>
         <ContactForm handleAddContact = {this.handleAddContact}/>
 
-        <h2>Contacts</h2>
+        <h2 className={css.subTitle}>Contacts</h2>
         <Filter value={filter} onChangeFilter={this.changeFilter}/>
-        <ContactList contacts={filteredContacts} />
+        <ContactList contacts={filteredContacts} onRemoveContact={this.removeContact}/>
       </div>
     );
   }
