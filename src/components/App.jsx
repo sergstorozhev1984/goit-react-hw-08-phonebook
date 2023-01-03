@@ -22,10 +22,7 @@ export class App extends Component {
     if (sameContact) {
       alert(`${ contact.name} is already in contacts`);
     } else {
-      const newContact = {
-        ... contact,
-        id: nanoid(),
-      };
+      const newContact = {...contact, id: nanoid()};
       this.setState((prevState) => ({
         contacts: [...prevState.contacts, newContact],
       }));
