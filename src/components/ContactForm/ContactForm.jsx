@@ -1,6 +1,5 @@
-import { nanoid } from 'nanoid';
 import css from './ContactForm.module.css';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Component } from 'react';
 
 export class ContactForm extends Component {
@@ -15,18 +14,16 @@ export class ContactForm extends Component {
       [name]: value,
     });
   };
+
   handleSubmit = e => {
     e.preventDefault();
-    this.props.handleAddContact({
-      name: this.state.name,
-      number: this.state.number,
-      id: nanoid(),
-    });
+    this.props.handleAddContact({...this.state});
     this.setState({
       name: '',
       number: '',
     });
   };
+
   render() {
     return (
       <form className={css.contactForm} onSubmit={this.handleSubmit} >
@@ -63,6 +60,6 @@ export class ContactForm extends Component {
   }
 }
 
-// ContactForm.propTypes = {
-//   handleAddContact: PropTypes.func.isRequired,
-// }
+ContactForm.propTypes = {
+  handleAddContact: PropTypes.func.isRequired,
+}
