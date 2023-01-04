@@ -4,7 +4,7 @@ import { Filter } from './Filter/Filter';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import css from '../components/App.module.css';
-
+const LOCAL_KEY = 'contacts'
 export class App extends Component {
   state = {
     contacts: [
@@ -15,6 +15,20 @@ export class App extends Component {
     ],
     filter: '',
   };
+
+  componentDidMount(){
+    const localContacts = localStorage.getItem(LOCAL_KEY);
+    const parsedContacts = JSON.parse(localContacts);
+    if (parsedContacts) {
+      this.setState({contacts: parsedContacts})
+    }
+  }
+
+  componentDidUpdate(_, prevState){
+    if (prevState.contacts!== this.state.contacts) {
+      localStorage.setItem(LOCAL_KEY, JSON.stringify(this.state.contacts))
+    }
+  }
 
   handleAddContact =  contact => {
     const sameContact = this.state.contacts
