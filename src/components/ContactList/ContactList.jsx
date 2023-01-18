@@ -1,23 +1,32 @@
 import { ContactListItem } from './ContactListItem/ContactListItem';
-import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
-export const ContactList = ({ contacts, onRemoveContact}) => {
+import { useDispatch, useSelector } from 'react-redux';
+import { getContactFilter, getContacts } from 'redux/selectors';
+
+export const ContactList = () => {
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(getContactFilter);
+
+  const filteredContacts = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter)
+    );
+
+  
   return (
     <ul className={css.contactList}>
-      {contacts.map(({ name, number, id }) => (
-        <ContactListItem key={id} name={name} number={number} id={id} onRemoveContact={onRemoveContact}/>
+      {filteredContacts.map(({ name, number, id }) => (
+        <ContactListItem key={id} name={name} number={number} id={id}/>
       ))}
     </ul>
   );
 };
 
-ContactList.propTypes = {
-  onRemoveContact: PropTypes.func.isRequired,
-  contacts: PropTypes.arrayOf(
-    PropTypes.exact({
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
-}
+// ContactList.propTypes = {
+//   contacts: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       name: PropTypes.string.isRequired,
+//       number: PropTypes.string.isRequired,
+//       id: PropTypes.string.isRequired,
+//     }).isRequired
+//   ).isRequired,
+//}
