@@ -1,15 +1,15 @@
-import { ContactListItem } from './ContactListItem/ContactListItem';
-import css from './ContactList.module.css';
-import { useSelector } from 'react-redux';
-import { getContactFilter, getContacts } from 'redux/selectors';
+// import { ContactListItem } from './ContactListItem/ContactListItem';
+// import css from './ContactList.module.css';
+// import { useSelector } from 'react-redux';
+// import { getContactFilter, getContacts } from 'redux/selectors';
 
 export const ContactList = () => {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getContactFilter);
+  // const contacts = useSelector(getContacts);
+  // const filter = useSelector(getContactFilter);
 
-  const filteredContacts = () => contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
+  // const filteredContacts = () => contacts.filter(contact =>
+  //     contact.name.toLowerCase().includes(filter.toLowerCase())
+  //   );
 
   
   return (

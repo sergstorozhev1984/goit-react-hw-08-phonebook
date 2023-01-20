@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 // import { deleteContact } from 'redux/contactsSlice';
 import css from './ContactListItem.module.css';
-import { getIsloading } from 'redux/selectors';
-import { useEffect } from 'react';
-import { fetchContacts } from 'redux/contacts.thunk';
+// import { getIsloading } from 'redux/selectors';
+// import { useEffect } from 'react';
+// import { fetchContacts } from 'redux/contacts.thunk';
 
 export const ContactListItem = ({name, number, id}) => {
-  const dispatch = useDispatch();
-  const isLoading = useSelector(getIsloading)
-useEffect(() => {
-  dispatch(fetchContacts())
-}, []);
+  // const dispatch = useDispatch();
+  // const isLoading = useSelector(getIsloading)
+// useEffect(() => {
+//   dispatch(fetchContacts())
+// }, []);
   
 
   return (
