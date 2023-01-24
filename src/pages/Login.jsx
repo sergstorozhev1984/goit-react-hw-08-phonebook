@@ -1,9 +1,9 @@
-import { useState } from "react";
+// import { useState } from "react";
 
-export const Login = () => {
+// export const Login = () => {
     
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [password, setPassword] = useState('');
 
     // const handleSubmit = (e) => {
     //     e.preventDefault();
@@ -13,16 +13,16 @@ export const Login = () => {
     //     }
 
     // }
-    return (
-        <div>
-            <form>
-                <label>E-mail
-                    <input type="email" value={(e) => setEmail(e.target.value)}/>
-                </label>
-                <label>Password
-                    <input type="password" value={(e) => setPassword(e.target.value)}/>
-                </label>
-            </form>
-        </div>
-    )
-}
+//     return (
+//         <div>
+//             <form>
+//                 <label>E-mail
+//                     <input type="email" value={(e) => setEmail(e.target.value)}/>
+//                 </label>
+//                 <label>Password
+//                     <input type="password" value={(e) => setPassword(e.target.value)}/>
+//                 </label>
+//             </form>
+//         </div>
+//     )
+// }

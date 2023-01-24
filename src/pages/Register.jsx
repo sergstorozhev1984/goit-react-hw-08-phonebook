@@ -1,7 +1,6 @@
-import { createElement, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { registerUserThunk } from "redux/authUser/authUserThunk";
-import { registerUser } from "services/userService";
 
 export const Register = () => { 
     const [name, setName] = useState('');
