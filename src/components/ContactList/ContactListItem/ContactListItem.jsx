@@ -9,8 +9,8 @@ export const ContactListItem = ({name, number, id}) => {
   return (
     <li className={css.item}>
       <span className={css.name}>{name}:</span>
-      <span>{number}</span>
-      <button className={css.deleteBtn} type="button" onClick={() => dispatch(deleteContact(id))}>Delete</button>
+      <span className={css.number}>{number}</span>
+      <button className={css.btn} type="button" onClick={() => dispatch(deleteContact(id))}>Delete</button>
     </li>
   );
 };

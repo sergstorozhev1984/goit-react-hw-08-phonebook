@@ -7,9 +7,11 @@ import { useEffect } from 'react';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
+  const isUserLoggedIn = useSelector(state => state.auth.isLoggedIn)
   useEffect(() => {
+    if(!isUserLoggedIn) return;
     dispatch(fetchContacts());
-  }, [dispatch]);
+  }, [isUserLoggedIn, dispatch]);
 
   const filteredContacts = useSelector(getFilteredContacts);
 

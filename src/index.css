@@ -10,7 +10,7 @@ body {
   font-size: 30px;
   color: #010101;
   background-color: #c4d2f2;
-  padding: 30px 50px;
+  /* padding: 30px 50px; */
 }
 
 code {
@@ -37,7 +37,6 @@ ol {
   margin-top: 0;
   margin-bottom: 0;
   padding-left: 0;
-  /* list-style-type: none; */
   list-style-type: disc;
 }
 

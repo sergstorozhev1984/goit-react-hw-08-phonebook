@@ -1,16 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-const contactsService = axios.create({
-  baseURL: 'https://connections-api.herokuapp.com/contacts/',
-
-});
+import { toast } from 'react-toastify';
+import { userPrivateApi } from 'services/userService';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
   async (_, thunkAPI) => {
     try {
-      const { data } = await contactsService.get();
+      const { data } = await userPrivateApi.get('/contacts');
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -22,9 +18,10 @@ export const addContact = createAsyncThunk(
   'contacts/addContact',
   async (contact, thunkAPI) => {
     try {
-      const { data } = await contactsService.post('', contact);
+      const { data } = await userPrivateApi.post('/contacts', contact);
       return data;
     } catch (e) { 
+      toast.error(`${e.message}`);
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -32,11 +29,14 @@ export const addContact = createAsyncThunk(
 
 export const deleteContact = createAsyncThunk(
     'contacts/deleteContact',
-    async (id, { rejectWithValue, dispatch }) => {
+    async (id, { rejectWithValue}) => {
       try {
-        const {data} = await contactsService.delete(id);
+        const {data} = await userPrivateApi.delete(`/contacts/${id}`);
+        console.log(id);
+        console.log(data);
         return data;
       } catch (e) { 
+        toast.error(`${e.message}`);
         return rejectWithValue(e.message);
       }
     }

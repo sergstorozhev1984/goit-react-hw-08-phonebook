@@ -1,11 +1,21 @@
 .label {
     display: flex;
     align-items: center;
+    justify-content: center;
+    text-shadow: -2px -2px 5px #ffffff, 3px 3px 5px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    color: #444444;
 }
 .input {
     display: inline-flex;
     margin-left: 20px;
     border-radius: 5px;
     padding: 5px;
-
+    display: block;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    box-shadow: inset -2px -2px 5px #ffffff, inset 3px 3px 5px rgba(0, 0, 0, 0.1);
 }
+

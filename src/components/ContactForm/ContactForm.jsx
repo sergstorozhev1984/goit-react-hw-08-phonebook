@@ -40,7 +40,7 @@ export const ContactForm = () => {
   };
 
   return (
-    <form className={css.contactForm} onSubmit={handleSubmit}>
+    <form className={css.form} onSubmit={handleSubmit}>
       <label className={css.label}>
         Name
         <input

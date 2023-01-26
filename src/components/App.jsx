@@ -1,44 +1,40 @@
-// import { Filter } from './Filter/Filter';
-// import { ContactForm } from './ContactForm/ContactForm';
-// import { ContactList } from './ContactList/ContactList';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import css from '../components/App.module.css';
-// import { Loader } from './Loader/Loader';
-// import { getIsloading } from 'redux/selectors';
-// import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { Login } from 'pages/Login';
 import { Layout } from './Layout/Layout';
 import { Home } from 'pages/Home';
 import { Register } from 'pages/Register';
-
+import { Contacts } from 'pages/Contacts';
+import { PublicRoute } from './Routes/PublicRoute';
+import { PrivateRoute } from './Routes/PrivateRoute';
+import { Suspense, useEffect } from 'react';
+import { getCurrentUserThunk } from 'redux/auth/authUserThunk';
+import { useDispatch } from 'react-redux';
+import { Loader } from './Loader/Loader';
 
 export const App = () => {
-  // const  isLoading = useSelector(getIsloading);
+  const dispatch = useDispatch();
 
-    return (
-      <Layout>
-      {/* <Suspense fallback={<Loader/>}> */}
-        <Routes>
-          <Route path="/" element={<Home />} />
+  useEffect(() => {
+    dispatch(getCurrentUserThunk());
+  }, [dispatch]);
+
+  return (
+    <Layout>
+      <Suspense fallback={<Loader/>}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/" element={<PublicRoute />}>
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />}/>
-          {/* <Route path="/contacts" element={<Contacts />}/> */}
-          {/* <Route path="*" element={<PageNotFound />} />  */}
-        </Routes>
-      {/* </Suspense> */}
+          <Route path="/login" element={<Login />} />
+        </Route>
+        <Route path="/" element={<PrivateRoute />}>
+          <Route path="/contacts" element={<Contacts />} />
+        </Route>
+      </Routes>
+      </Suspense>
       <ToastContainer autoClose={3000} />
     </Layout>
-      
-        // <h1 className={css.title}>Phonebook</h1>
-        // <ContactForm  />
-        // <h2 className={css.subTitle}>Contacts</h2>
-        // <Filter />
-        // {isLoading && <Loader/>}
-        // <ContactList />
-        // <ToastContainer />
-      
-    );
-  
-}
+  );
+};

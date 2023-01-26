@@ -46,14 +46,15 @@ const initialState = {
         state.isLoading = true;
       })
       .addCase(deleteContact.fulfilled, (state, action) => {
-        const index = state.items.findIndex(
+       /* const index = state.items.findIndex(
           contact => {
             const index = state.items.findIndex(task => task.id === action.payload.id);
             state.items.splice(index, 1);
             return state.items;
           }
         );
-        state.items.splice(index, 1);
+        state.items.splice(index, 1);*/
+        state.items = state.items.filter(contact => contact.id !== action.payload.id)
         state.isLoading = false;
         state.error = null;
         console.log(action);

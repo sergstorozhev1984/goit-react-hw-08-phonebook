@@ -1,31 +1,26 @@
-.item {
-    max-width: 600px;
+.wrapUserMenu {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+}
+
+.userName {
+    font-size: 22px;
+    font-weight: bold;
     display: flex;
     align-items: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #444444;
-    text-shadow: -2px -2px 5px #ffffff, 3px 3px 5px rgba(0, 0, 0, 0.1);
+    color: grey;
+    
 }
-.name {
-    display: inline-flex;
-    margin-right: 20px;
-}
-
-
 
 .btn {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 50px;
     padding: 8px 14px;
     font-weight: 700;
     font-size: 20px;
     border-radius: 4px;
     border: none;
-    color: grey;
+    color: rgb(167, 172, 22);
     background-color: #ebf5fc;
     box-shadow: -2px -2px 5px #ffffff, 3px 3px 5px rgba(0, 0, 0, 0.1);
     transition: all 200ms ease-in-out;
@@ -38,6 +33,6 @@
     background-color: #6a9bd8;
   }
   .btn:focus {
-    outline: 3px solid var(--bg);
+    outline: 3px solid #ebf5fc;;
     box-shadow: 0px 0px 0px 6px #6a9bd8;
   } 
