@@ -85,7 +85,7 @@ const authUserSlice = createSlice({
         state.error = null;
         state.user = payload;
         state.isLoggedIn = true;
-        toast.success(`Welcome back, ${state.user.name}!`)
+        toast.success(`Welcome back, ${state.user.email}!`)
     })
     .addCase(getCurrentUserThunk.rejected, (state, action) => {
         state.isLoading = false;
