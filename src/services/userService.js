@@ -10,10 +10,10 @@ export const userPrivateApi = axios.create({
 
 export const token = {
     set: token => {
-      userPrivateApi.defaults.headers.Authorization =  token;
+      userPrivateApi.defaults.headers.common.Authorization =  `Bearer ${token}`;
     },
     unset: () => {
-      userPrivateApi.defaults.headers.Authorization = '';
+      userPrivateApi.defaults.headers.common.Authorization = '';
     },
   };
 
