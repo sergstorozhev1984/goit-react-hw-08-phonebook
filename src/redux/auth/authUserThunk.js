@@ -27,7 +27,7 @@ export const loginUserThunk = createAsyncThunk('auth/login', async(formData, {re
 export const getCurrentUserThunk = createAsyncThunk('auth/getCurrentUser', async (_, thunkAPI) => {
     const state = thunkAPI.getState();
 
-    if(!state.auth.token) return thunkAPI.rejectWithValue('Oops');
+    if(!state.auth.token) return;
     token.set(state.auth.token);
 
     try {
